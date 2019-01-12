@@ -1,0 +1,85 @@
+<div class="horizontal-scroll">
+  <table class="table table-hover">
+    <thead>
+      <tr class="black-muted-bg">
+        <!-- <th>#</th> -->
+        <th>Key</th>
+        <th>System Model</th>
+        <th>System State</th>
+        <th>Previous State</th>
+        <th>Time into Previous State</th>
+        <th>User</th>
+        <th class="align-right">Status</th>
+        <th class="align-right">Edit</th>
+        <th class="align-right">Activate/Deactivate</th>
+        <th class="align-right">Delete</th>
+        <th class="align-right">QR Code</th>
+        <th class="align-right"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let system of systems; let i=index" class="no-top-border" >
+        <!-- <td class="align-left">{{ i + 1 }}</td> -->
+        <td class="align-left">
+          <span>{{ system.$key }}</span>
+        </td>
+        <td ngClass="nowrap">{{ system.system_model }}</td>
+        <td class="align-left">
+          <!-- <span><b>{{ getState_from_GSID(system.GSID) }}</b></span> -->
+          <span><b>{{ systemStates[i] }}</b></span>
+        </td>
+        <td class="align-left">
+          <!-- <span><b>{{ getState_from_GSID(system.GSID) }}</b></span> -->
+          <span><b>{{ prevStates[i] }}</b></span>
+        </td>
+        <td class="align-left">
+          <!-- <span><b>{{ getState_from_GSID(system.GSID) }}</b></span> -->
+          <span><b>{{ prevDispTimeStamps[i] }}</b></span>
+        </td>
+        <td class="align-left">
+          <span>{{ systemUsers[i]?.first_name }} {{ systemUsers[i]?.last_name }}</span>
+        </td>
+        <td class="align-right">
+          <span class="label label-success" *ngIf="system.active; else not_active">
+              Active
+          </span>
+          <ng-template #not_active>
+            <span class="label label-danger">
+              Pending
+            </span>
+          </ng-template>
+        </td>
+        <td class="align-right">
+          <button type="button" class="btn btn-xs btn-primary" (click)="edit($event, system.$key)">
+            <i class="fa fa-pencil "></i> Edit
+          </button>
+        </td>
+        <td class="align-right">
+          <button type="button" class="btn btn-xs btn-danger" (click)="deactivate($event, system.$key)" *ngIf="system.active; else activate">
+            <i class="fa fa-fire"></i> Deactivate
+          </button>
+          <ng-template #activate>
+            <button type="button" class="btn btn-xs btn-warning" (click)="activate($event, system.$key)">
+              <i class="fa fa-fire"></i> Activate
+            </button>
+          </ng-template>
+        </td>
+        <td class="align-right">
+          <button type="button" class="btn btn-xs btn-danger" (click)="delete($event, system.$key)">
+            <i class="fa fa-trash-o"></i> Delete
+          </button>
+        </td>
+        <td class="align-right">
+          <button type="button" class="btn btn-xs btn-info" (click)="generate($event, system.$key)">
+            <i class="fa fa-qrcode"></i> Generate
+          </button>
+        </td>
+        <td class="align-right">
+          <a class="btn btn-xs btn-info" [routerLink]="['/pages/systems/view', system.$key]" role="button">
+            <i class="fa fa-eye"></i> View
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

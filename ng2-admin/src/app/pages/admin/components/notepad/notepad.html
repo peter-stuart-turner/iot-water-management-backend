@@ -1,0 +1,47 @@
+
+<div class="widgets">
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <ba-card title="{{authService.profile.first_name}} '{{authService.profile.user_name}}' {{authService.profile.last_name}}'s Tasks" baCardClass="with-scroll">
+
+        <h4 class="grid-h">Enter and check off tasks.</h4>
+        <br>
+        <div class="row show-grid">
+
+        </div>
+        <div class="row show-grid">
+          <div class="col-md-8">
+            <div>
+              <div class="task-todo-container">
+                <input type="text" value="" class="form-control task-todo" placeholder="{{'dashboard.todo.task_todo' | translate}}" (keyup)="addToDoItem($event)" [(ngModel)]="newTodoText"/>
+                <i (click)="addToDoItem($event)" class="add-item-icon ion-plus-round"></i>
+                <div class="box-shadow-border"></div>
+
+                <ul class="todo-list">
+                  <li *ngFor="let item of getNotDeleted()" [ngClass]="{checked: item.isChecked, active: item.isActive}"
+                      (mouseenter)="item.isActive=true" (mouseleave)="item.isActive=false">
+
+                    <div class="blur-container"><div class="blur-box"></div></div>
+                    <i class="mark" [ngStyle]="{ 'background-color': item.color }"></i>
+                    <label class="todo-checkbox custom-checkbox custom-input-success">
+                      <input type="checkbox" [(ngModel)]="item.isChecked">
+                      <span class="cut-with-dots">{{ item.text }}</span>
+                    </label>
+                    <i class="remove-todo ion-ios-close-empty" (click)="item.deleted = true; deleteItem(item);"></i>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div></div>
+          </div>
+        </div>
+
+      </ba-card>
+    </div>
+  </div>
+
+</div>

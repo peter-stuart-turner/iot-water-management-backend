@@ -1,0 +1,52 @@
+<div class="horizontal-scroll">
+  <table class="table table-hover">
+    <thead>
+      <tr class="black-muted-bg">
+        <th></th>
+        <th class="align-left">Detail</th>
+        <th class="align-left">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="no-top-border">
+        <td></td>
+        <td class="align-left">UID</td>
+        <td class="align-left">{{ user_id }}</td>
+      </tr>
+      <tr class="no-top-border">
+        <td></td>
+        <td class="align-left">Username</td>
+        <td class="align-left">{{ user.user_name }}</td>
+      </tr>
+      <tr class="no-top-border">
+        <td></td>
+        <td class="align-left">Name</td>
+        <td class="align-left">{{ user.first_name }} {{ user.last_name }}</td>
+      </tr>
+      <tr class="no-top-border">
+        <td></td>
+        <td class="align-left">Email</td>
+        <td class="align-left">{{ user.email }}</td>
+      </tr>
+      <tr class="no-top-border">
+        <td></td>
+        <td class="align-left">Role</td>
+        <td class="align-left">{{ user.role }}</td>
+      </tr>
+      <tr class="no-top-border">
+        <td></td>
+        <td class="align-left">Number of systems</td>
+        <td class="align-left">
+          <span *ngIf="user.systems; else admin_template">
+            {{ user.systems?.length || '0' }}
+          </span>
+          <ng-template #admin_template>
+            <span>
+            {{ user.clients?.length || '0' }}
+            </span>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

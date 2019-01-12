@@ -1,0 +1,8 @@
+{
+  "name": "electron-app",
+  "version": "0.0.1",
+  "main": "main.js",
+  "devDependencies": {
+    "@angular/cli": "^1.2.6"
+  }
+}

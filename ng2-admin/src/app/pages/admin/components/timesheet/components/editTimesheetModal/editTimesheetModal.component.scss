@@ -1,0 +1,33 @@
+@import "../../../../../../theme/sass/conf/conf";
+
+.modal-buttons .btn {
+  margin-right: 20px;
+}
+
+.modal-content {
+  color: $dropdown-text;
+}
+
+.form-group > label, .form-group > label {
+  color: #000000;
+}
+
+input, select, textarea{
+    color: #000000;
+}
+
+input, select, textarea{
+    color: #000000;
+}
+
+textarea:focus, input:focus {
+    color: #000000;
+}
+
+.error {
+  color: #FF0000;
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,44 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">Time card for {{ date }}</h4>
+    <button class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="form-group">
+      <label for="dayStart"><b>Start of Date</b></label>
+      <input type="time" [(ngModel)]="timeSheet.start" class="form-control" id="dayStart" aria-describedby="dayStart">
+    </div>
+
+    <div class="form-group">
+      <label for="lunchStart"><b>Start of lunch</b></label>
+      <input type="time" [(ngModel)]="timeSheet.lunch_start" class="form-control" id="lunchStart" aria-describedby="lunchStart">
+    </div>
+
+    <div class="form-group">
+      <label for="lunchEnd"><b>End of lunch</b></label>
+      <input type="time" [(ngModel)]="timeSheet.lunch_end" class="form-control" id="lunchEnd" aria-describedby="lunchEnd">
+    </div>
+
+    <div class="form-group">
+      <label for="dayEnd"><b>End of Day</b></label>
+      <input type="time" [(ngModel)]="timeSheet.end" class="form-control" id="dayEnd" aria-describedby="dayEnd">
+    </div>
+
+    <div class="form-group">
+      <label for="dayComments"><b>Comments</b></label>
+      <textarea class="form-control" [(ngModel)]="timeSheet.comments" id="dayComments" rows="4"></textarea>
+    </div>
+
+    <span *ngIf="error">
+      <span><small class="error">{{ errorMessage }}</small></span>
+    </span>
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary confirm-btn" (click)="performAction()">{{ modalActionButton }}</button>
+    <button class="btn btn-danger cancel-btn" (click)="closeModal()">Cancel</button>
+  </div>
+</div>

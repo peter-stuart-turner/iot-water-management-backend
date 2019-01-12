@@ -1,0 +1,38 @@
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-6">
+
+      <ba-card title="Log Files" baCardClass="with-scroll">
+        <table class="table table-hover">
+          <thead>
+            <tr class="black-muted-bg">
+              <th>#</th>
+              <th>Log file name</th>
+              <th>Download</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let file of logFiles; let i=index" class="no-top-border">
+              <td class="align-left">{{ i + 1 }}</td>
+              <td class="align-left">
+                <span>{{ file }}</span>
+              </td>
+              <td class="align-right">
+                <button type="button" class="btn btn-xs btn-default" (click)="download($event, file)">
+                  <i class="fa fa-download"></i> Download
+                </button>
+              </td>
+              <td class="align-right">
+                <button type="button" class="btn btn-xs btn-danger" (click)="delete($event, file)">
+                  <i class="fa fa-trash-o"></i> Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ba-card>
+
+    </div>
+  </div>
+</div>

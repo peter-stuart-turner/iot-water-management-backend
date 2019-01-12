@@ -1,0 +1,19 @@
+@import '../../theme/sass/auth';
+
+.logo {
+  height: 150px;
+  width: 100%;
+  background-image: url("assets/img/gc_login_trans.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+.inputText {
+  color: #ffffff;
+}
+
+.inputText:focus {
+  color: #ffffff;
+}

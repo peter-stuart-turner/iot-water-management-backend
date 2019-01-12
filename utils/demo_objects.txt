@@ -1,0 +1,12 @@
+===============
+= User Object =
+===============
+
+data = {
+  "user_id": "DEMO_USER_ID",
+  "user_data": {
+    "first_name": "FRIDAY",
+    "last_name": "DEMO",
+    "email": "green@chain.com"
+  }
+}

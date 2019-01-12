@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "greenchain-backend",
+  "private_key_id": "83f3c6ba2b59eb9169e6c9d32b94a55ec62d9e2e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCvSUNQ1+awwjef\n36TXYSoqR4NI3XqH1mvyqqithMoEdahtzmr2b0GDDgUYV3c0PStICU2Zt3/tn+je\nqxCSro6Y68gTku4QQ60MM/QKBgP5DBCKSEQZ9exilAaftMW41rnQRD/8CBCQnm+R\n0FbCBFRYP52dArOLkYUj0KAMfP4GiNx56pBq60VVOpepFdIudbIzpExNiBhyppV1\n2gmD/b2gJIOttQ75uPcjsB25HA8HXMbzUjKDvehiTU9ZxlT4/ldeXsn8trEfqR4t\nhZR6yzsdPhrm4tl+NgD0DVTNn/tAAtHPS7kFEfjH11K/e04YTm9t+8u6pylS7NdO\nF8lIESO/AgMBAAECggEAAaOP5DMd6zwslKLt6laOAQGHs66cDbcoGFzsVFxXc+DB\nWbMVjYsvOjFeMuT3Q90CJvUb2BIP7LdKriSz66qljnolGCD1VRND2T7LPpOMSgcz\nndscp6FaDNS1a4vbDdDQKAVBNeZbZ20om9RyjeJyz9c4spyPJ4l8aoAT+BWoCGJT\njPLsWnMGkPiGg9JCwAsn2LhzdZdalfiUQ+xSc/4lIBUx531wvzPETdV8858kLvMz\nrzGI7iW1cCai02AbCC7dPStNMo+esOb5JOwRDlrM8Pv7J/ZBVAx2gHl0HZHDwbFK\ntX1UaFHs6cNZYrRltTEHFGa7mLHvEeiNd3JR02gbbQKBgQDwGWQz17wrCj/k+uyP\n/6+0hHZjMvI0ZJxtCuv/j2rMp55ab9jblN6O/QbR3Nzzfht9mejx85WWvEvEE17N\nREdJeIT+Vucz2laM553jVfCb2BPskR6AREyIVhp3R10kfNEkhqiBBzg3WX+HOmn1\n3K9TI98Xn+i5egBE8AdbtzRDvQKBgQC65QpyrEJpUuumZ+3Vq5Mxf6a2WqcyR7xE\n3gvyn46d4JAjMK53ciytslr7qC4zC/SxjwuzsjCnGcv+qQrgwL+mvBV+8gwvP6RL\nC/DdRCnj3JJiuGK0Qh43HywB7l2UaNKP8xo3guKOjPCjruFoDrIW8ZuVW7zEOICL\nhChEStt/KwKBgGwyNQp7tGr80nBAdywo/6fsbWEkiyr7D9a/rjvbCDizbFO6xVGm\nU2jCMzmNOvBrKr4+BlBKAWYM8mOoivcbRrigG+Z1iPi/8nLKyUax6pyAEfJwLvuE\nS6zAiGqp+RpBOQopuHN0qmue5C4vL6LA0S05JAaEZB55EPf/5oD5HQ9NAoGAIuk5\n5GXNGgOFRVZQlQMxwaNIrvOMG9ZOksavkKjBaThTdF9Zl7JaKjAQ0sV9q8dl8+z2\nkKCOeghVlMJa59TZd/nWQhpQsFrBA8u9OHfNI2VGau5qcaWQI1fNTqcKD/jsrDsL\nAKeQTnSBVvIJ5PgpyCNlnqa+QiET0fvj0a3yBnUCgYAbgYlNaUqZ8eBmByZ2K11J\nf0AVYWHvU1Vzaz7B1mod6NTFpC9MN0cZCWYy5xSoWaQVJCDJxEHu/t3XD0wGppcl\nN50ojfMM+ThriQBZ48eBE/vIB0OCg4G9jcUThWonKZQlRq21ZoT7y4KvihWqmufV\n3iqyKuRDukG/92l+XvXxOw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "greenchain-backend@appspot.gserviceaccount.com",
+  "client_id": "101467159530241712778",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/greenchain-backend%40appspot.gserviceaccount.com"
+}

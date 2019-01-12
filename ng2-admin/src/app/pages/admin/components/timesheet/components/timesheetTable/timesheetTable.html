@@ -1,0 +1,52 @@
+<div class="horizontal-scroll">
+  <table class="table table-hover">
+    <thead>
+      <tr class="black-muted-bg">
+        <!-- <th>#</th> -->
+        <th>Date</th>
+        <th>Start of Day</th>
+        <th>Start of lunch</th>
+        <th>End of lunch</th>
+        <th>End of Day</th>
+        <th class="align-right">Hours worked</th>
+        <th class="align-right">Notes</th>
+        <th class="align-right">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let timecard of timesheets; let i=index" class="no-top-border">
+        <td class="align-left">
+          <span>{{ timecard.date }}</span>
+        </td>
+        <td>{{ timecard.start }}</td>
+        <td>{{ timecard.lunch_start }}</td>
+        <td>{{ timecard.lunch_end }}</td>
+        <td>{{ timecard.end }}</td>
+        <td class="align-right">{{ hoursWorked[i] }}</td>
+        <td class="align-right">
+          <span class="label label-success" *ngIf="timecard.comments; else no_comments">
+              <i class="fa fa-check" aria-hidden="true"></i>
+          </span>
+          <ng-template #no_comments>
+            <span class="label label-danger">
+            <i class="fa fa-times" aria-hidden="true"></i>
+            </span>
+          </ng-template>
+        </td>
+        <td class="align-right">
+          <a class="btn btn-xs btn-info" (click)="editTimecard($event, timecard)" role="button">
+            <i class="fa fa-eye"></i> View
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="modal-footer">
+    <button class="btn btn-danger confirm-btn" (click)="exportToPDF($event)">
+      <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Export to PDF
+    </button>
+    <button class="btn btn-warning cancel-btn" (click)="exportToCSV($event)">
+      <i class="fa fa-file-excel-o" aria-hidden="true"></i> Export to CSV
+    </button>
+  </div>
+</div>

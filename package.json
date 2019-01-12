@@ -1,0 +1,77 @@
+{
+  "name": "nodejs-getting-started",
+  "version": "1.0.0",
+  "description": "End to end sample for running Node.js applications on Google Cloud Platform",
+  "repository": "https://github.com/GoogleCloudPlatform/nodejs-getting-started",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha || true",
+    "cover": "nyc --cache npm test; nyc report --reporter=html"
+  },
+  "author": "Google Inc.",
+  "contributors": [
+    {
+      "name": "Jon Wayne Parrott",
+      "email": "jonwayne@google.com"
+    },
+    {
+      "name": "Jonathan Simon",
+      "email": "jbsimon@google.com"
+    },
+    {
+      "name": "Jason Dobry",
+      "email": "jdobry@google.com"
+    },
+    {
+      "name": "Ace Nassri",
+      "email": "anassri@google.com"
+    }
+  ],
+  "license": "Apache-2.0",
+  "semistandard": {
+    "globals": [
+      "after",
+      "afterEach",
+      "before",
+      "beforeEach",
+      "describe",
+      "it"
+    ]
+  },
+  "dependencies": {
+    "@types/file-saver": "0.0.1",
+    "apn": "^2.1.5",
+    "atob": "^2.0.3",
+    "body-parser": "^1.17.2",
+    "btoa": "^1.1.2",
+    "cors": "^2.8.3",
+    "express": "~4.15.2",
+    "firebase": "^4.1.3",
+    "firebase-admin": "^5.0.0",
+    "hashmap": "^2.3.0",
+    "html-pdf": "^2.2.0",
+    "http": "0.0.0",
+    "keygenerator": "^1.0.4",
+    "mqtt": "^2.9.0",
+    "node-schedule": "^1.2.3",
+    "pdfkit": "^0.8.3",
+    "pdfmake": "^0.1.33",
+    "qrcode": "^0.8.2",
+    "request": "^2.81.0",
+    "sha256": "^0.2.0",
+    "winston": "^2.3.1",
+    "winston-daily-rotate-file": "^1.4.6"
+  },
+  "devDependencies": {
+    "ava": "~0.19.1",
+    "chai": "^4.1.2",
+    "mocha": "^3.5.0",
+    "nodejs-repo-tools": "git+https://git@github.com/GoogleCloudPlatform/nodejs-repo-tools.git",
+    "supertest": "~3.0.0",
+    "tap-dot": "~1.0.5"
+  },
+  "engines": {
+    "node": ">=4.3.2"
+  }
+}

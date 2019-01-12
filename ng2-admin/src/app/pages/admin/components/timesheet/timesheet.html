@@ -1,0 +1,16 @@
+<div class="widgets">
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <ba-card title="Time Card" baCardClass="with-scroll table-panel">
+        <ba-full-calendar [baFullCalendarConfiguration]="calendarConfiguration" baFullCalendarClass="blurCalendar" (onCalendarReady)="onCalendarReady($event)"></ba-full-calendar>
+      </ba-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <ba-card title="Time Sheets" baCardClass="with-scroll table-panel">
+        <timesheet-table></timesheet-table>
+      </ba-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,191 @@
+<div class="widgets">
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <ba-card title="Please fill out the form" baCardClass="with-scroll">
+
+        <form #f="ngForm" novalidate *ngIf="system">
+
+          <div class="form-group">
+            <label for="system_key">System Key</label>
+            <input type="text" class="form-control" id="system_key" [(ngModel)]="system.key" name="key" disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="systemType">Select System Model</label>
+            <select class="form-control" id="systemType" [(ngModel)]="system.system_model" name="system_model">
+              <option *ngFor="let sm of system_models" [value]="sm">{{ sm }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="schedule">Greywater Capacity</label>
+            <div class="gw-input radio-demo row">
+
+              <div class="col-md-4" *ngFor="let gw of grey_water_cap">
+                <label class="radio-inline custom-radio nowrap">
+                  <input type="radio" [(ngModel)]="system.gCapacity" name="gCapacity" [value]="gw.value">
+                  <span translate>{{ gw.display }}</span>
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="schedule">Rainwater Capacity</label>
+            <div class="rw-input radio-demo row">
+
+              <div class="col-md-4" *ngFor="let rw of rain_water_cap">
+                <label class="radio-inline custom-radio nowrap">
+                  <input type="radio" [(ngModel)]="system.rCapacity" name="rCapacity" [value]="rw.value">
+                  <span translate>{{ rw.display }}</span>
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success" (click)="addSystem(f.valid, f.value)">Add System</button>
+
+        </form>
+
+        <!-- <form [formGroup]="form" (ngSubmit)="addSystem()">
+
+          <div class="form-group">
+            <label for="system_key">System Key</label>
+            <input type="text" class="form-control" id="system_key" placeholder="gfhasduifbhsdfuiab" disabled formControlName="system_key">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleSelect1">Select System Model</label>
+            <select class="form-control" id="systemType" formControlName="system_model">
+              <option *ngFor="let system_model of system_models" [value]="system_model">{{ system_model }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="schedule">Greywater Capacity</label>
+            <div class="input-demo radio-demo row">
+              <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                <input type="radio" name="inlineRadioOptions" id="gw_cap_200" value="200" formControlName="gCapacity">
+                <span translate>200 Liters</span>
+              </label>
+              </div>
+              <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                <input type="radio" name="inlineRadioOptions" id="gw_cap_750" value="750" formControlName="gCapacity">
+                <span>750 Liters</span>
+              </label>
+              </div>
+              <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                <input type="radio" name="inlineRadioOptions" id="gw_cap_1000" value="1000" formControlName="gCapacity">
+                <span>1000 Liters</span>
+              </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="schedule">Rainwater Capacity</label>
+            <div class="input-demo radio-demo row">
+              <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                <input type="radio" name="inlineRadioOptions" id="rw_cap_5000" value="5000" formControlName="rCapacity">
+                <span translate>5000 Liters</span>
+              </label>
+              </div>
+              <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                <input type="radio" name="inlineRadioOptions" id="rw_cap_10000" value="10000" formControlName="rCapacity">
+                <span>10000 Liters</span>
+              </label>
+              </div>
+              <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                <input type="radio" name="inlineRadioOptions" id="rw_cap_15000" value="15000" formControlName="rCapacity">
+                <span>15000 Liters</span>
+              </label>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success" [disabled]="!form.valid">Add System</button>
+
+        </form> -->
+
+        <!-- <form #addSystemForm="ngForm" (ngSubmit)="addSystem(addSystemForm.value)">
+
+          <div class="form-group">
+            <label for="system_key">System Key</label>
+            <input type="text" class="form-control" id="system_key" placeholder="gfhasduifbhsdfuiab" disabled [(ngModel)]="system_key">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleSelect1">Select System Model</label>
+            <select class="form-control" id="systemType" ngModel>
+              <option *ngFor="let system_model of system_models" [value]="system_model">{{ system_model }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="schedule">Greywater Capacity</label>
+            <div class="input-demo radio-demo row">
+              <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <span translate>200 Liters</span>
+              </label>
+              </div>
+              <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <span>750 Liters</span>
+              </label>
+              </div>
+              <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                <span>1000 Liters</span>
+              </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="schedule">Rainwater Capacity</label>
+            <div class="input-demo radio-demo row">
+              <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <span translate>5000 Liters</span>
+              </label>
+              </div>
+              <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <span>10000 Liters</span>
+              </label>
+              </div>
+              <div class="col-md-4">
+                <label class="radio-inline custom-radio nowrap">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                <span>15000 Liters</span>
+              </label>
+              </div>
+            </div>
+          </div>
+
+
+
+        </form> -->
+      </ba-card>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,43 @@
+<div class="horizontal-scroll">
+  <table class="table table-hover">
+    <thead>
+    <tr class="black-muted-bg">
+      <th></th>
+      <th class="align-left">Detail</th>
+      <th class="align-left">Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="no-top-border">
+      <td></td>
+      <td class="align-left">System ID</td>
+      <td class="align-left">{{ system_id }}</td>
+    </tr>
+    <tr class="no-top-border">
+      <td></td>
+      <td class="align-left">User</td>
+      <td class="align-left">--> <i>SET THIS TO USER ID</i> <--</td>
+    </tr>
+    <tr class="no-top-border">
+      <td></td>
+      <td class="align-left">System Model</td>
+      <td class="align-left">{{ system.system_model }}</td>
+    </tr>
+    <tr class="no-top-border">
+      <td></td>
+      <td class="align-left">Active</td>
+      <td class="align-left">{{ system.active }}</td>
+    </tr>
+    <tr class="no-top-border">
+      <td></td>
+      <td class="align-left">Grey Water Size</td>
+      <td class="align-left">{{ system.gCapacity }}</td>
+    </tr>
+    <tr class="no-top-border">
+      <td></td>
+      <td class="align-left">Rain Water Size</td>
+      <td class="align-left">{{ system.rCapacity }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
