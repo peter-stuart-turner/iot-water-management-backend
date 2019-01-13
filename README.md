@@ -1,175 +1,43 @@
-[![N|Solid](http://www.greenchain-engineering.com/wp-content/uploads/2016/10/Web_logo2.png)](http://www.greenchain-engineering.com/)
+# Automated Water/Wastewater Management and Irrigation System, NodeJS backend
 
-# Greenchain Backend
+# Screenshots
 
-API calls for the admin panel and MQTT service
+<p float="left">
+  <img src="/screenshots/admin-panel-1.jpg" alt="splashscreen" width="195px">
+  <img src="/screenshots/Launchlab-winners.jpg" alt="dashboard" width="195px">
+</p>
 
-## Installation
 
-```sh
-git pull
-npm install
-gcloud app deploy --project greenchain-software
-```
+## Background: What was this project about?
 
-## API Calls
+This is part of a project that was a product of a company myself and a few friends started out of university. The project was an automated (Internet of Things) based Rainwater, Greywater and Irrigation Smart System. 
 
-### Systems
+The system is able to smartly manage your house’s water supply by alternating between rainwater and municipal water – depending on the level of water in your tanks. It also smartly determines which water sources (Greywater, rainwater, municipal) will be used for irrigating your garden.
 
-#### Fetch All
-```sh
-GET /api/v1/system/fetch/all
-```
+The system comes with a mobile app (available on iOS and android usng Ionic) that allows you to:
 
-Returns JSON list with all the systems data.
+* Check your greywater and rainwater levels
+* ‘Zone’ your garden, for irrigation
+* Manage your system (backwashes, irrigation schedules etc.)
 
-#### Fetch ID
-```sh
-GET /api/v1/system/fetch/<ID>
-```
+The system was also designed to be smart enough to make decisions based on the weather at your location (if it is raining, it will not irrigate). Unfortunately we never got around to fully implementing this functionality. 
 
-Provide ID in url. Returns JSON object with systems data.
+Also (rather unfortunately), myself and my co-founder had a bit of a meltdown as he wanted to focus on 'non-smart' such systems, and I wanted to go ahead with this. Thus I was edged out and this smart system project left in the past. So, in short, I am open sourcing all of the code in the hope that someone may find it of interest if they are trying to do something similar - it is quite rusty as it was a version 1, but it worked well enough and we actually have 3 systems still up and running and working with the app at time of writing. 
 
-#### Add
-```sh
-POST /api/v1/system/add
-```
+## This Repo: Background on how the backend fits in 
+* This repo is only one aspect of the project as a whole, it is the backend and installer admin panel, which uses the MQTT protocol to communicate with various systems (depending on user) and with the ionic clients (mobile apps), which are also MQTT clients. 
+* The backend is reposnible for sending out scheduled MQTT messages to trigger irrigation, backwashing and draining of systems, based on settings in the system in question's app (Each system belongs to a user/family, and they can control it using their app which they log into)
+* The backend also executes various other business logic functions
 
-Provide post data as 'data' in 'x-www-form-urlencoded'. Requires JSON object with systems data.
-If you want to add a system with a particular ID, the 'id' value must be set in the JSON object.
 
-```
-data = {
-  "id": <Set this if you want to choose the ID. If there are the same ID's it will be updated>,
-  "gCapacity": <Number>,
-  "rCapacity": <Number>,
-  "system_model": <String>,
-  "userKey": <String, gets assigned when a system is activated>,
-  "active": <Boolean, should be set to false>
-}
-```
 
-#### Update
-```sh
-POST /api/v1/system/update
-```
+## Other aspects to the project 
+* Ionic app which is the consumer facing client. This app is also an MQTT client and allows users to log in and observe/control their systems. From the app, users may set irrigation schedules and zones, backwash and drain schedules, and specify what type of water their garden should irrigate with (municipal, rainwater or greywater). Users may also observe their tank water levels real time, as these levels are broadcast via MQTT over GPRS from each system (using ultrasonic distance sensors in the tanks) 
+* MQTT broker, we used Amazon's CloudMQTT for this, but were in the process of writing our own broker using Mosca when myself and my co-founder had the meltdown. 
+* C++ scripts that ran on Arduinos (micros I think they were). Each system was controlled by an Arduino with a connected GPRS chip, the chip allowed for the Arduino's to also be MQTT clients which could talk to the apps and backend over our local cellular networks (Vodacom). The systems continuously monitor and broadcast water levels to backend over MQTT and GPRS (using ultrasonic distance sensors), so that the app can inform users of their realtime water levels. 
 
-Provide post data as 'data' in 'x-www-form-urlencoded'. Requires JSON object with systems data.
-If you want to add a system with a particular ID, the 'id' value must be set in the JSON object.
+## Instructions
+Because of all of the various parts, (backend, broker, hardware) this project will likely not work out of the box. The app should work, but will not be linked to any systems. The repo is actually more to be used as a guideline as to how we went about building the systems, so that you can use it for educational purposes - and use bits of code you may want (MQTT, weather service etc. )
 
-```
-data = {
-  "id": <Set this if you want to choose the ID. If there are the same ID's it will be updated>,
-  "gCapacity": <Number>,
-  "rCapacity": <Number>,
-  "system_model": <String>,
-  "userKey": <String, gets assigned when a system is activated>,
-  "active": <Boolean, should be set to false>
-}
-```
-
-#### Activate
-```sh
-POST /api/v1/system/activate
-```
-
-Provide post data as 'data' in 'x-www-form-urlencoded'. Requires JSON object with the
-system ID of the system to be activated. The id should be called 'hashed_id'. Currently using SHA256 to hash the ID.
-
-#### Delete
-```sh
-DELETE /api/v1/system/remove/<ID>
-```
-
-Provide ID in url. Returns JSON object with systems data.
-
-### Users
-
-#### Fetch All
-```sh
-GET /api/v1/user/fetch/all
-```
-
-Returns JSON list with all the users data.
-
-#### Fetch ID
-```sh
-GET /api/v1/user/fetch/<ID>
-```
-
-Provide ID in url. Returns JSON object with users data.
-
-#### Add
-```sh
-POST /api/v1/user/add
-```
-
-Provide request data as 'data' in 'x-www-form-urlencoded'. Returns JSON object with users data.
-
-#### Delete
-```sh
-DELETE /api/v1/user/remove/<ID>
-```
-
-Provide ID in url. Returns JSON object with users data.
-
-### Greywater Schedulers
-
-#### Fetch ID
-```sh
-GET /api/v1/schedulers/greywater/fetch/<ID>
-```
-Returns the schedules for the provided greywater system.
-
-#### Add
-```sh
-POST /api/v1/schedulers/greywater/add
-```
-
-Provide request data as 'data' in 'x-www-form-urlencoded'. An ID and data for the scheduler is required.
-```
-data = {
-  "id": <String, the ID of the system the scheduler belongs to>,
-  "data": <Scheduler data>
-}
-```
-
-#### Add Default
-```sh
-POST /api/v1/schedulers/greywater/add/default
-```
-
-Provide request data as 'data' in 'x-www-form-urlencoded'. An ID is required.
-```
-data = {
-  "id": <String, the ID of the system the scheduler belongs to>
-}
-```
-
-#### Update system
-```sh
-POST /api/v1/schedulers/greywater/update
-```
-
-Provide request data as 'data' in 'x-www-form-urlencoded'. An ID is required.
-```
-data = {
-  "id": <String, the ID of the system the scheduler belongs to>,
-  "data": <Scheduler data>
-}
-```
-
-#### Delete
-```sh
-GET /api/v1/schedulers/greywater/delete/<ID>
-```
-Deletes the schedule for the provided system ID.
-
-## Todos
-
- - User verification
- - Security
-
-## License
-
-MIT
+## Contact
+If you are interested in this project, please do not hesitate to reach out to me, and I will help you out as best I can. 
